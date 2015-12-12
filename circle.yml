@@ -1,0 +1,18 @@
+machine:
+  post:
+    - sudo rm -rf /usr/local/go
+    - if [ ! -e go1.5.2.linux-amd64.tar.gz ]; then curl -o go1.4.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz; fi
+    - sudo tar -C /usr/local -xzf go1.5.2.linux-amd64.tar.gz
+
+dependencies:
+  cache_directories:
+    - ~/go1.5.2.linux-amd64.tar.gz
+  pre:
+    - export PATH=$PATH:$PWD/bin
+  override:
+    - go get github.com/tools/godep
+    - go get -u github.com/jstemmer/go-junit-report
+
+test:
+  override:
+    - godep go test -v ./... | go-junit-report > $CIRCLE_TEST_REPORTS/report.xml
