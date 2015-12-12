@@ -8,6 +8,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//NotYetImplementedMessage is the text returned to the user when a request is
+//made for a feature that isn't yet functional
+const NotYetImplementedMessage = "Not yet implemented, sorry!"
+
 func main() {
 	port := os.Getenv("PORT")
 
@@ -23,10 +27,10 @@ func main() {
 
 //HomeHandler responds to requests from the home page
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	http.Error(w, "Not yet implemented", http.StatusNotImplemented)
+	http.Error(w, NotYetImplementedMessage, http.StatusNotImplemented)
 }
 
 //UprnHandler responds to requests for property information
 func UprnHandler(w http.ResponseWriter, r *http.Request) {
-	http.Error(w, "Not yet implemented", http.StatusNotImplemented)
+	http.Error(w, NotYetImplementedMessage, http.StatusNotImplemented)
 }

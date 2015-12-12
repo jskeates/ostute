@@ -1,10 +1,10 @@
 package main
 
-import (
-	"log"
-	"testing"
-)
+import "testing"
 
-func TestExample(t *testing.T) {
-	log.Println("A test function")
+func TestNotYetImplementedMessageIsCorrect(t *testing.T) {
+	expected := "Not yet implemented, sorry!"
+	if NotYetImplementedMessage != expected {
+		t.Fatalf("NotYetImplementedMessage has wrong text. Expected \"%s\" but was \"%s\".", expected, NotYetImplementedMessage)
+	}
 }
