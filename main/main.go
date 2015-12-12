@@ -1,16 +1,24 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 	r := mux.NewRouter()
 	r.HandleFunc("/", HomeHandler)
 	r.HandleFunc("/uprn/{uprn}", UprnHandler)
-	http.Handle("/", r)
+	http.ListenAndServe(":"+port, r)
 }
 
 //HomeHandler responds to requests from the home page
