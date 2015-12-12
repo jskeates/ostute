@@ -7,8 +7,6 @@ machine:
 dependencies:
   cache_directories:
     - ~/go1.5.2.linux-amd64.tar.gz
-  pre:
-    - export PATH=$PATH:$PWD/bin
   override:
     - go get github.com/tools/godep
     - go get -u github.com/jstemmer/go-junit-report
