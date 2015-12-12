@@ -13,10 +13,12 @@ import (
 //made for a feature that isn't yet functional
 const NotYetImplementedMessage = "Not yet implemented, sorry!"
 
+var APIKey string
+
 func main() {
 	port := getEnvVarOrDie("PORT")
 	//osAPIKey := getEnvVarOrDie("OS_API_KEY")
-	_ = getEnvVarOrDie("OS_API_KEY")
+	APIKey = getEnvVarOrDie("OS_API_KEY")
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", HomeHandler)
