@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/jskeates/ostute",
+	"GoVersion": "go1.5.2",
+	"Deps": []
+}
