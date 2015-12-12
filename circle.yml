@@ -14,3 +14,9 @@ dependencies:
 test:
   override:
     - godep go test -v ./... | go-junit-report > $CIRCLE_TEST_REPORTS/report.xml
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: ostute
