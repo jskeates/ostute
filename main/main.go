@@ -13,11 +13,11 @@ import (
 //made for a feature that isn't yet functional
 const NotYetImplementedMessage = "Not yet implemented, sorry!"
 
+//APIKey is the API key for accessing the OS API endpoints
 var APIKey string
 
 func main() {
 	port := getEnvVarOrDie("PORT")
-	//osAPIKey := getEnvVarOrDie("OS_API_KEY")
 	APIKey = getEnvVarOrDie("OS_API_KEY")
 
 	r := mux.NewRouter()

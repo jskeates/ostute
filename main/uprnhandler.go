@@ -2,11 +2,25 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"net/http"
+	"text/template"
 
 	"github.com/gorilla/mux"
 )
+
+const tmpl = `
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{{.Number}}, {{.Road}} - OStute</title>
+	</head>
+	<body>
+    <h1>{{.Number}}, {{.Road}}</h1>
+    <h2>{{.Town}}, {{.Postcode}}</h2>
+	</body>
+</html>
+`
 
 //UprnHandler responds to requests for property information
 func UprnHandler(w http.ResponseWriter, r *http.Request) {
@@ -20,7 +34,20 @@ func UprnHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-	_, err = io.WriteString(w, fmt.Sprintf("<html><body><h1>%s :: %s</h1><h2>%s :: %s</h2></body></html>", dpa.BUILDINGNUMBER, dpa.THOROUGHFARENAME, dpa.POSTTOWN, dpa.POSTCODE))
+	data := struct {
+		Number, Road, Town, Postcode string
+	}{
+		Number:   dpa.BUILDINGNUMBER,
+		Road:     dpa.THOROUGHFARENAME,
+		Town:     dpa.POSTTOWN,
+		Postcode: dpa.POSTCODE,
+	}
+	t, err := template.New("webpage").Parse(tmpl)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	err = t.Execute(w, data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
