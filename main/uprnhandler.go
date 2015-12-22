@@ -12,21 +12,22 @@ import (
 const tmpl = `
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>{{.Number}}, {{.Road}} - OStute</title>
-    <style>
-      body {
-        background-color: #453c90;
-        color: white;
-        font-family: "Source Sans Pro Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
-      }
-    </style>
-	</head>
-	<body>
-    <h1>{{.Number}}, {{.Road}}</h1>
-    <h2>{{.Town}}, {{.Postcode}}</h2>
-	</body>
+  <head>
+     <meta charset="UTF-8">
+     <title>{{.Number}}, {{.Road}} - OStute</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+       body {
+         background-color: #453c90;
+         color: white;
+         font-family: "Source Sans Pro Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+       }
+     </style>
+   </head>
+   <body>
+     <h1>{{.Number}}, {{.Road}}</h1>
+     <h2>{{.Town}}, {{.Postcode}}</h2>
+   </body>
 </html>
 `
 
