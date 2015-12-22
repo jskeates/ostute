@@ -14,7 +14,7 @@ const tmpl = `
 <html>
   <head>
      <meta charset="UTF-8">
-     <title>{{.Number}}, {{.Road}} - OStute</title>
+     <title>{{.Number}} {{.Road}} - OStute</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <style>
        body {
@@ -25,7 +25,7 @@ const tmpl = `
      </style>
    </head>
    <body>
-     <h1>{{.Number}}, {{.Road}}</h1>
+     <h1>{{.Number}} {{.Road}}</h1>
      <h2>{{.Town}}, {{.Postcode}}</h2>
    </body>
 </html>
